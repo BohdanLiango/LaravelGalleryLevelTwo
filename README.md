@@ -149,6 +149,131 @@ Route::middleware(['first', 'second'])->group(function () {
 **View** - после того как отработал контроллер мы вызываем виды, виды в **Laravel** работают в шаблонизаторе 
 **blade**. 
 
+Сперва создаем шаблон для сайта в файле ``` yield.blade.php```.
+
+```php
+<!-- Stored in resources/views/layouts/app.blade.php -->
+
+<html>
+    <head>
+        <title>App Name - @yield('title')</title>
+    </head>
+    <body>
+        @section('sidebar')
+            This is the master sidebar.
+        @show
+
+        <div class="container">
+            @yield('content')
+        </div>
+    </body>
+</html>
+```
+
+Потом разширяем его, используя слудующие функции:
+
+``` @extends('layouts.app')``` - по етому пути **Laravel** знает какой шаблон использовать.
+
+
+``` @section('title', 'Page Title')``` - создание секции (которая разная для разных страниц сайта).
+
+``` @include('shared.errors') ``` - подключение модулей на страницу, и различных файлов.
+
+#### Пример:
+
+```php
+<!-- Stored in resources/views/child.blade.php -->
+
+@extends('layouts.app')
+
+@section('title', 'Page Title')
+
+@section('sidebar')
+    @parent
+
+    <p>This is appended to the master sidebar.</p>
+@endsection
+
+@section('content')
+    <p>This is my body content.</p>
+@endsection
+```
+
+Потом прописывает в **web.php**  маршрут:
+
+```php
+Route::get('blade', function () {
+    return view('child');
+});
+```
+
+
+
+
+#### IF:
+```php
+	@if (count($records) === 1)
+	    I have one record!
+	@elseif (count($records) > 1)
+	    I have multiple records!
+	@else
+	    I don't have any records!
+	@endif
+```
+
+#### Switch:
+
+```php
+	@switch($i)
+    @case(1)
+        First case...
+        @break
+
+    @case(2)
+        Second case...
+        @break
+
+    @default
+        Default case...
+@endswitch
+```
+
+#### Loops:
+
+```php
+	@for ($i = 0; $i < 10; $i++)
+	    The current value is {{ $i }}
+	@endfor
+
+	@foreach ($users as $user)
+	    <p>This is user {{ $user->id }}</p>
+	@endforeach
+
+	@forelse ($users as $user)
+	    <li>{{ $user->name }}</li>
+	@empty
+	    <p>No users</p>
+	@endforelse
+
+	@while (true)
+	    <p>I'm looping forever.</p>
+	@endwhile
+```
+#### Comments:
+```php
+	{{-- This comment will not be present in the rendered HTML --}}
+```
+
+#### PHP:
+
+```php
+@php
+    //code
+@endphp
+```
+
+Cылка на полную документацио - [Blade Laravel](https://laravel.com/docs/5.6/blade)
+
 ### <a name="request-pane"></a>4.Request
 
 **Request** - служыт для получения разного вида запросов, таких как ``` $_GET```, ``` $_POST```.
