@@ -143,7 +143,7 @@ Route::middleware(['first', 'second'])->group(function () {
 		}
 	}
 ```
-
+Cылка на полную документацию - [Controllers](https://laravel.com/docs/5.6/controllers)
 
 ### <a name="view-pane"></a>3.View
 
