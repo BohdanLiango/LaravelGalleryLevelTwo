@@ -662,7 +662,112 @@ Route::get('/home', function (){
 
 **Collections** - компонент который дает дополнительные возможности для работы з масивами.
 
+Допустим нам нужно написать выборку пользователей, по некоторым параметрам.
+
+```php
+Route::get('/', function (){
+    $users = [
+        [
+            'id'=> 1,
+            'name' => "John",
+            'status' => 'ban'
+        ],
+        [
+            'id'=> 2,
+            'name' => "Eva",
+            'status' => 'ban'
+        ],
+        [
+            'id'=> 3,
+            'name' => "Jane",
+            'status' => 'active'
+        ],
+        [
+            'id'=> 4,
+            'name' => "Ololoszka",
+            'status' => 'active'
+        ],
+    ];
+
+    $bannedUsers = [];
+
+    foreach ($users as $user)
+    {
+        if($user['status'] == "ban"){
+            if($user['id'] > 1){
+                $bannedUsers[] = $user;
+            }
+        }
+    }
+
+    $bannedUsersWithIDs = [];
+
+    foreach ($bannedUsers as $user)
+    {
+        if($user['id'] >1){
+            $bannedUsersWithIDs[] = $user;
+        }
+    }
+    dd($bannedUsersWithIDs);
+//    return view('welcome');
+});
+
+```
+
+Вместо етого можна написать так:
+
+```php
+Route::get('/', function (){
+    $users = collect([
+        [
+            'id'=> 1,
+            'name' => "John",
+            'status' => 'ban'
+        ],
+        [
+            'id'=> 2,
+            'name' => "Eva",
+            'status' => 'ban'
+        ],
+        [
+            'id'=> 3,
+            'name' => "Jane",
+            'status' => 'active'
+        ],
+        [
+            'id'=> 4,
+            'name' => "Ololoszka",
+            'status' => 'active'
+        ],
+    ]);
+
+
+
+    $names = $users->filter(function($user){
+        return $user['status'] == 'ban';
+    })->filter(function ($user){
+        return $user['id'] > 1;
+    });
+
+    dd($names);
+
+
+```
+
+Сперва оборачиваем массив $users в функцию ```collect()```, в этой функции уже собраны все [методы](https://laravel.com/docs/5.6/collections#available-methods), к примеру вместо обычного **foreach**, тоесть выборки определенного поля или просто розбить масив на елементы, можно написать так: 
+
+```php
+    $names = $users->map(function($user){
+       return $user['name'];
+    });
+
+```
+
+
+
 Cылка на документацию - [Collections](https://laravel.com/docs/5.6/collections)
+
+
 
 ### <a name="querybuilder-pane"></a>10.QueryBuilder
 
