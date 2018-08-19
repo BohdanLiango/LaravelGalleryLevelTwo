@@ -811,11 +811,23 @@ Cылка на документацию - [Collections](https://laravel.com/docs
 php artisan migrate
 ```
 
-Откатить миграции можна командой:
+Откатить предидущую миграцию можно командой:
 
 ```php
 php artisan migrate:rollback
 
+```
+
+Откатить все миграции:
+
+```php
+php artisan migrate:reset
+```
+
+Откатить и вернуть миграции на свое предидущее "место":
+
+```php
+php artisan migrate:refresh
 ```
 
 Файл с миграциями выглядит так:
@@ -860,9 +872,13 @@ class CreateUsersTable extends Migration
 ```
 
 Где:
+
+
 ```Schema::create('users', function (Blueprint $table)  ``` - создание таблицы с именем **users**.
 
 
 ```$table->string('name');``` - создание поля **name**, **string** - по умолчанию ```varchar255```.
 
 
+
+Cылка на полную документацию: [Migrations](https://laravel.com/docs/5.6/migrations)
