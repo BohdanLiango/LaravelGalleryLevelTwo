@@ -21,6 +21,7 @@
 	- 13.[PHP Artisan Console](#artisan-pane)
 	- 14.[Laravel mix](#laravelMix-pane)
 	- 15.[Migration](#migration-pane)
+	- 16.[Faker](#faker-pane)
 
 ### <a name="route-pane"></a>1.Route
 
@@ -778,6 +779,28 @@ Cылка на документацию - [Collections](https://laravel.com/docs
 
 **Eloquet** - модель, позволяет работать з таблицами в базах данных как с обычными обьектами.
 
+Для создание модели прописываем команду:
+
+```php artisan make:model Post```
+
+Создаства файл ```app/Post.php```, с которым мы уже можем совершать некоторые действия, файл выглядит так:
+
+```php
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model
+{
+    //
+}
+
+```
+
+
+
 ### <a name="unit-pane"></a>12.Unit\Feature Test
 
 **Unit\Feature Test** - тесты, созданые для автоматизации тестов **Laravel**. 
@@ -882,3 +905,46 @@ class CreateUsersTable extends Migration
 
 
 Cылка на полную документацию: [Migrations](https://laravel.com/docs/5.6/migrations)
+
+### <a name="faker-pane"></a>15.Faker
+
+**Faker** - создан для наполнения фейковыми данными бд.
+
+Файлы с Factories находятся по пути **database/factories**.
+
+Для создания новых фековых данных нам нужно создать сперва Factory:
+
+```php artisan make:factory PostFactory``` 
+
+Потом в файле ```PostFactory.php```, нужно прописать где и какие данные мы хотим получить.
+
+```php
+$factory->define(App\Post::class, function (Faker $faker) {
+    return [
+        'title' => $faker->words,
+        'slug' => $faker->slug,
+        'content' => $faker->text,
+        'date' => $faker->date('Y-m-d'),
+        'user_id' => 1
+    ];
+});
+
+```
+
+Для исполнения **faker** нужно написать следующую команду:
+
+```php
+factory(App\Post::class, 5)->create();
+```
+
+Где **5** это сколько сделать записей.
+
+Можна вызвать напрямую из маршрута **Route**:
+
+```php
+Route::get('/', function () {
+    factory(App\Post::class, 5)->create();
+});
+```
+
+Сылка на полную документацию - [Faker](https://laravel.com/docs/5.6/database-testing)
