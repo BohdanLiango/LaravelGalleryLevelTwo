@@ -653,9 +653,16 @@ Route::get('/home', function (){
 
 Выведется стандартная ошыбка которая уже вшыта в **Laravel**, чтобы изменить вид ошыбки, текст и так далее, на мнужно создать свои ошыбки по пути: **resources/view/errors*** файл **404.blade.php**, **503.blade.php**. И тогда **Laravel** будет выводить свои собственные.  
 
+Сылка на документацию **Laravel** - [Errors](https://laravel.com/docs/5.6/errors#http-exceptions)
+
+
+Сылка на все возможные ошыбки (контролируемые) - [Errors Wikipedia](https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D0%BA%D0%BE%D0%B4%D0%BE%D0%B2_%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D1%8F_HTTP)
+
 ### <a name="collection-pane"></a>9.Collections
 
 **Collections** - компонент который дает дополнительные возможности для работы з масивами.
+
+Cылка на документацию - [Collections](https://laravel.com/docs/5.6/collections)
 
 ### <a name="querybuilder-pane"></a>10.QueryBuilder
 
