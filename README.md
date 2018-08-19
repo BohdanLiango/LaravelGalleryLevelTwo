@@ -496,8 +496,140 @@ Example: ```nullable|image```, к примеру есть пользовател
 
 ### <a name="middleware-pane"></a>7.Middleware
 
-**Middleware** - служыть для доступа к некоторым данным для админов, либо других ролям на сайте. Служыт как фиьтр.
+**Middleware** - служыть для доступа к некоторым данным для админов, либо других ролям на сайте. Служыт как фильтр.
 
+Ето обычный клас у которого есть методы, в который мы уже прописываем условия.
+
+Выглядит так:
+
+```php
+
+
+Route::middleware('auth')->group(function (){
+
+    Route::get('/admin', 'AdminController@index');
+
+});
+
+
+Route::get('asdasd', function (){
+   return ('Вы не авторизованы');
+})->name('login');
+
+
+```
+Если пользователь не зарегистрирован, то перенаправит на **Route** asdasd. 
+
+
+Для создания своего **middleware** прописываем в консоле:
+
+```bash
+php artisane make:middleware AdminMiddleware
+```
+
+Переходим в папку **App\Http\Middleware**:
+
+```php
+//AdminMiddleware.php
+
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+
+class AdminMiddleware
+{
+    /**
+     * Handle an incoming request. // Принимать/обрабатывать входящий запрос
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle($request, Closure $next)
+    {
+        return $next($request);
+    }
+}
+
+```
+
+Потом нам нужно зарегистрировать **Middleware**:
+
+```php
+Kernel.php
+
+/**
+     * The application's route middleware.
+     *
+     * These middleware may be assigned to groups or used individually.
+     *
+     * @var array
+     */
+    protected $routeMiddleware = [
+        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
+        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
+        'can' => \Illuminate\Auth\Middleware\Authorize::class,
+        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
+        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+	'admin' => \App\Http\Middleware\AdminMiddleware::class,   ///Подключаем наш Middleware, под именем admin
+    ];
+
+```
+
+Дальше можно его указать в маршрутах:
+
+```php
+web.php
+
+
+
+Route::middleware(['guest', 'admin'])->group(function (){
+
+    Route::get('/home', 'HomeController@index');
+
+});
+
+
+```
+
+Можна проверить работаел ли **middleware**, вписав команду  ```php artisan route:list```:
+```
+ GET|HEAD | home               |      | App\Http\Controllers\HomeController@index    | web,guest,admin 
+```
+
+В самом файле **AdminMiddleware.php** можно прописывать уже способы фильтрации:
+
+```php
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+
+class AdminMiddleware
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle($request, Closure $next)
+    {
+    
+   	if(!$user->isAdmin()){
+	   dd('404 Error');
+	}
+        return $next($request);
+    }
+}
+```
 ### <a name="http-pane"></a>8.HTTP Errors
 
 **HTTP Errors** - для регенерации ошыбок, таких как ``` 404 Page Not Found```.
