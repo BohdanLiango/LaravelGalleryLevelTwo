@@ -630,6 +630,8 @@ class AdminMiddleware
     }
 }
 ```
+
+Cылка на полную документацию - [Middleware](https://laravel.com/docs/5.6/middleware)
 ### <a name="http-pane"></a>8.HTTP Errors
 
 **HTTP Errors** - для регенерации ошыбок, таких как ``` 404 Page Not Found```.
