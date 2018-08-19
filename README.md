@@ -20,6 +20,7 @@
 	- 12.[Unit\Feature Test ](#unit-pane)
 	- 13.[PHP Artisan Console](#artisan-pane)
 	- 14.[Laravel mix](#laravelMix-pane)
+	- 15.[Migration](#migration-pane)
 
 ### <a name="route-pane"></a>1.Route
 
@@ -788,4 +789,80 @@ Cылка на документацию - [Collections](https://laravel.com/docs
 ### <a name="laravelMix-pane"></a>14.Laravel mix
 
 **Laravel mix** - создыный для работы с **webpack**.
+
+### <a name="migration-pane"></a>15.Migration
+
+**Migration** - созданы для работы с базой данных.
+
+Для создания миграции нам нужно в ```php artisan``` прописать команду:
+
+```php
+	php artisan make:migration create_user_table
+```
+
+В названии миграции должно присутствовать то, что мы хотим с етим сделать.
+К примеру ```create_user_table``` создаст нам таблицу **user**.
+
+Все миграции по умолчанию находятся в **database/migration**.
+
+Запустить все миграции мы можем командой:
+
+```php
+php artisan migrate
+```
+
+Откатить миграции можна командой:
+
+```php
+php artisan migrate:rollback
+
+```
+
+Файл с миграциями выглядит так:
+
+```php
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateUsersTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('users', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('users');
+    }
+}
+
+```
+
+Где:
+```Schema::create('users', function (Blueprint $table)  ``` - создание таблицы с именем **users**.
+
+
+```$table->string('name');``` - создание поля **name**, **string** - по умолчанию ```varchar255```.
+
 
