@@ -336,6 +336,164 @@ Cылка на полную документацио - [Blade Laravel](https://l
 
 **Validation** - служыть для проверки различных данных, и отображения ошыбок для пользователя.
 
+Сперва нужно создать форму для валидации, что логично) выглядит будет примерно так:
+
+```php
+///welcome.blade.php
+
+@extend('layout')
+@section('content')
+<form action="/test" method="post">
+    <input type="text" name="title">
+    <br>
+    {{csrf_field()}}
+    <button type="submit">Submit</button>
+</form>
+@endsection
+```
+
+Потом в маршрутах нужно указать контролер который будет отвечать за обработку формы.
+
+```php
+//web.php
+
+Route::post('/test', "TestController@store");
+
+```
+
+В самом контроллере прописываем метод **store**.
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+class TestController extends Controller
+{
+
+    public function store(Request $request) {
+	
+	$this->validate();
+        return view('home');
+    }
+}
+
+
+```
+
+В ```$this->validate();``` нужно указать правила валидации, так как мы хотим валидировать наш запрос, первым параметром
+указываем именно сам запрос ```$request``` выглядеть должно так: ```$this->validate($request);```, вторым параметром должны быть правила валидации, которые мы передаем в выгляде масива ```$this->validate($request, ['title' => 'required']);```.
+
+Чтобы вывести ошыбку существует глобальная переменная в **Laravel**, ```$errors```;
+
+```php
+///welcome.blade.php
+
+@extend('layout')
+@section('content')
+{{$errors->first('title')}} /// выведет нам ошыбку
+<form action="/test" method="post">
+    <input type="text" name="title">
+    <br>
+    {{csrf_field()}}
+    <button type="submit">Submit</button>
+</form>
+@endsection
+```
+
+При добавлении новых полей к примеру:
+
+
+```php
+///welcome.blade.php
+
+@extend('layout')
+@section('content')
+<form action="/test" method="post">
+    <input type="text" name="title">
+    <input type="text" name="description"> //новое поле
+    <br>
+    {{csrf_field()}}
+    <button type="submit">Submit</button>
+</form>
+@endsection
+```
+
+Прописываем в контроллере ```TestController``` новые данные для валидации:
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+class TestController extends Controller
+{
+
+    public function store(Request $request) {
+	
+	$this->validate($request, [
+	'title' => 'required',
+	'description' => 'required'
+	]);
+        return view('home');
+    }
+}
+```
+
+Для вывода всех ошыбок лучше использовать ```foreach```:
+
+```php
+///welcome.blade.php
+
+@extend('layout')
+@section('content')
+
+@foreach($errors->all() as $error)
+	{{$error}} <br>
+@endforeach
+<form action="/test" method="post">
+    <input type="text" name="title" value="{{old('title')}}">
+    <input type="text" name="description" value="{{old('description')}}"> 
+    <br>
+    {{csrf_field()}}
+    <button type="submit">Submit</button>
+</form>
+@endsection
+```
+
+Функция ```old()``` сохраняет предидущие данные, и при сбрасывание формы, если она была неправильно заполнена,
+возвращает предидщие данные.
+
+#### Основные правила валидации:
+
+``` required ``` - обязательное поле
+
+
+``` email ```- проверка текста на формат email
+
+
+``` confirmed ``` - проверяет два поля на идентичность, к примеру поле с паролем
+
+
+``` exists:table ``` - проверяет существуют ли данные в определенной таблице
+
+
+``` unique:users, email_address ``` - проверяет на уникальность
+
+
+``` image ``` - проверяет чтобы файл был картинкой
+
+
+``` accepted ``` - всякие галочки, к примеру правила пользования сайтом
+
+
+``` nullable ``` - не обязательные правила валидации, но можна указать какие дополнительные правила валидации можно использовать.
+
+
+Example: ```nullable|image```, к примеру есть пользователь, и у него есть аватарка, так он может не загружать аватарку
+
+Сылка на полную документацию - [Validation](https://laravel.com/docs/5.6/validation)
+
 ### <a name="middleware-pane"></a>7.Middleware
 
 **Middleware** - служыть для доступа к некоторым данным для админов, либо других ролям на сайте. Служыт как фиьтр.
