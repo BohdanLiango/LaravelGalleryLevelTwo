@@ -7,7 +7,7 @@
 
         <ul class="nav nav-pills nav-fill">
             <li class="nav-item">
-                <a class="nav-link active" href="images/create">Add image</a>
+                <a class="nav-link active" href="gallery/create">Add image</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Longer nav link</a>
@@ -29,9 +29,9 @@
                             <img src="/{{$image->image}}" alt="" class="img-thumbnail rounded">
                         </div>
                         <div class="col-md-4 float-md-right">
-                            <a href="images/show/{{$image->id}}" class="btn btn-info my-button">Show</a>
-                            <a href="images/edit/{{$image->id}}" class="btn btn-warning my-button">Edit</a>
-                            <a href="images/delete/{{$image->id}}" class="btn btn-danger my-button" onclick="return confirm('are yo sure?')">Delete</a>
+                            <a href="gallery/show/{{$image->id}}" class="btn btn-info my-button">Show</a>
+                            <a href="gallery/edit/{{$image->id}}" class="btn btn-warning my-button">Edit</a>
+                            <a href="gallery/delete/{{$image->id}}" class="btn btn-danger my-button" onclick="return confirm('are yo sure?')">Delete</a>
                         </div>
                     </div>
                 @endforeach

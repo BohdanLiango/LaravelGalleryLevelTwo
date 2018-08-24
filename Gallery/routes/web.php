@@ -19,11 +19,12 @@ Route::get('/', 'HomeController@home');
 Route::get('/contact', 'HomeController@contact');
 Route::get('/panel', 'HomeController@panel');
 
-Route::get('/gallery', 'ImagesController@index');
 
 
-Route::prefix('images')->group(function(){
 
+Route::prefix('gallery')->group(function(){
+
+    Route::get('/', 'ImagesController@index');
 
     Route::get('/create', 'ImagesController@create');
 

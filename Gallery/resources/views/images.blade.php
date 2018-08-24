@@ -7,7 +7,7 @@
                 @foreach($imagesInView as $image)
                     <div class="col-md-3 gallery-item">
                         <div>
-                            <a href="images/show/{{$image->id}}"><img src="/{{$image->image}}" alt="" class="img-thumbnail"></a>
+                            <a href="gallery/show/{{$image->id}}"><img src="/{{$image->image}}" alt="" class="img-thumbnail"></a>
                         </div>
                     </div>
                 @endforeach
