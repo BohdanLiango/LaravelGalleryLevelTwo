@@ -23,6 +23,7 @@
 	- 15.[Migration](#migration-pane)
 	- 16.[Faker](#faker-pane)
 	- 17.[Pagination](#pagination-pane)
+	- 18.[Seeds](#seed-pane)
 
 ### <a name="route-pane"></a>1.Route
 
@@ -911,6 +912,50 @@ Route::get('/', function(){
 
 ```
 
+
+Комбинация подходов, и защищенность данных:
+
+```php
+$post = Post::create($request->all()); // запишет все данные с формы
+// некоторые данные мы должны защитить, к примеру пользователя который написал пост, и дату написания
+$post->user_id = '123';
+$post->date = ('Y-m-d');
+$post->save();
+```
+
+***Update***
+
+```php
+$post = Post::find(5);
+$post->title = 'new Title';
+$post->save();
+
+```
+
+Если данных много можна использовать модель наполнитель:
+
+
+```php
+$data = [
+	"title" => "new Title",
+	"content" => "new Content"
+];
+
+$post = Post::find(5);
+$post->fill($data);
+$post->save();
+
+```
+
+***Delete***
+
+
+```php
+$post = Post::find(5);
+$post->delete();
+
+```
+
 Сылка на документацию - [Getting Started](https://laravel.com/docs/5.6/eloquent)
 
 ***Relationships***
@@ -1197,3 +1242,70 @@ php artisan vendor:publish
 В случаи пагинации, выбираем 8, и оно нам скопирует в нашу директорию все файлы связаны с пагинацией, для редактирования
 
 Сылка на полную документацию - [Pagination](https://laravel.com/docs/5.6/pagination)
+
+### <a name="seed-pane"></a>18.Seed
+
+Сидеры в отличии от факера заполняют DB  реальными данными.
+
+```php
+//database/seeds
+
+<?php
+
+use App\Post;
+use Illuminate\Database\Seeder;
+
+class DatabaseSeeder extends Seeder
+{
+    /**
+     * Seed the application's database.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Post::find(5)->update(['title'] => ['new title']);
+        // $this->call(UsersTableSeeder::class);
+    }
+}
+
+
+```
+
+Запуск seed :
+
+```php
+php artisan db:seed
+```
+
+Создание нового сида:
+
+```php
+php artisan make:seed PostTableSeeder
+```
+
+Для вызова определенного сидера нужно прописать в файле **DatabaseSeeder.php**:
+
+```php
+<?php
+use Illuminate\Database\Seeder;
+
+class DatabaseSeeder extends Seeder
+{
+    /**
+     * Seed the application's database.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $this->call(PostTableSeeder::class);
+    }
+}
+```
+
+Для выполнения одного Сидера прописываем:
+
+```php
+php artisan db:seed --class=PostTableSeeder
+```
