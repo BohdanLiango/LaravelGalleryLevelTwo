@@ -11,6 +11,39 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::get('/', 'HomeController@home');
+
+
+
+Route::get('/contact', 'HomeController@contact');
+Route::get('/panel', 'HomeController@panel');
+
+Route::get('/gallery', 'ImagesController@index');
+
+
+Route::prefix('images')->group(function(){
+
+
+    Route::get('/create', 'ImagesController@create');
+
+    Route::post('/store', 'ImagesController@store');
+
+    Route::get('/show/{id}', 'ImagesController@show');
+
+    Route::get('/edit/{id}','ImagesController@edit');
+
+    Route::post('/update/{id}','ImagesController@update');
+
+    Route::get('/delete/{id}','ImagesController@delete');
+
 });
+
+
+Route::middleware(['guest', 'admin'])->group(function (){
+
+    Route::get('/home', 'HomeController@index');
+
+});
+
+
