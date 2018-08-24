@@ -776,9 +776,9 @@ Cылка на документацию - [Collections](https://laravel.com/docs
 
 **QueryBuilder** - создание запросов для баз данных, их обработка и т.д.
 
-### <a name="eloquent-pane"></a>11.Eloquet
+### <a name="eloquent-pane"></a>11.Eloquent
 
-**Eloquet** - модель, позволяет работать з таблицами в базах данных как с обычными обьектами.
+**Eloquent** - модель, позволяет работать з таблицами в базах данных как с обычными обьектами.
 
 Для создание модели прописываем команду:
 
@@ -828,6 +828,88 @@ Route::get('/', function(){
 @endforeach
 ```
 
+***Create***
+
+```php
+//web.php
+
+Route::get('/', function(){
+  $posts = Post::create([
+  	'title' => 'test',
+	'content' => 'testcontent'
+  ]);
+  return view('welcome', ['posts'=>$posts]);
+});
+
+```
+ 
+При запуске произойдет ошыбка, через защиту **Laravel**, чтобы избежать ошыбки, нам нужно перейти в файл модели **Post.php**,
+и позволить заполнять указанные поля, функцией ```$fillable``` (поля которые могут быть заполнены).
+
+```php
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model
+{
+ 	public $fillable =["title", "content"]; // в масиве передаем допустимые поля   
+}
+
+```
+
+Все поля по умолчанию защищены, но если использовать функцию ```$guarded = [];```, тогда поля не защищены, и их можно заполнять.
+
+```php
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model
+{
+ 	public $guarded =[];   
+}
+
+```
+
+
+По умолчанию **Laravel** связывается с таблицей которая указана в названии модели, но можно изменить таблицу:
+
+```php
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model
+{
+	public $table = "post"; 
+}
+
+```
+
+
+Второй способ на создания(записывания данных):
+
+
+```php
+//web.php
+
+Route::get('/', function(){
+  $post = new Post;
+  
+  $post->title = 'titletest';
+  $post->content = 'njnjnj';
+  $post->save();
+  return view('welcome', ['posts'=>$posts]);
+});
+
+```
 
 
 
