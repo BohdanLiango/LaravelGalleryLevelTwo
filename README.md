@@ -936,7 +936,7 @@ class CreateUsersTable extends Migration
 
 Cылка на полную документацию: [Migrations](https://laravel.com/docs/5.6/migrations)
 
-### <a name="faker-pane"></a>15.Faker
+### <a name="faker-pane"></a>16.Faker
 
 **Faker** - создан для наполнения фейковыми данными бд.
 
@@ -978,3 +978,50 @@ Route::get('/', function () {
 ```
 
 Сылка на полную документацию - [Faker](https://laravel.com/docs/5.6/database-testing)
+
+### <a name="pagination-pane"></a>17.Paginator
+
+Для создании пагинации используем функцию ```paginate()```;
+
+
+Реализация в коде:
+
+
+```php
+//web.php
+
+user App\Post;
+
+Route::get('/', function(){
+	$posts = Post::paginate(5);   // 5 - елементов на 1 странице
+	return view('welcome');
+});
+```
+
+Вывод пагинации(сам переключатель);
+
+
+```php
+//welcome.blae.php
+@foreach($posts as $post)
+	<div>
+		<h3>{{$post->title}}</h3>
+		<p>{{$post->content}}</p>
+	</div>
+	<hr>
+@endforeach
+
+{{$posts->links()}} // Вывод пагинации
+
+```
+
+Для стилизования пагинации используем следующии команды:
+
+```php
+php artisan vendor:publish
+```
+
+Попадем в окошко, в котором нужно прописать что мы хотим "вынести"
+В случаи пагинации, выбираем 8, и оно нам скопирует в нашу директорию все файлы связаны с пагинацией, для редактирования
+
+Сылка на полную документацию - (Pagination)[https://laravel.com/docs/5.6/pagination]
