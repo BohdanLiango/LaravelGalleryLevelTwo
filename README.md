@@ -911,6 +911,96 @@ Route::get('/', function(){
 
 ```
 
+Сылка на документацию - [Getting Started](https://laravel.com/docs/5.6/eloquent)
+
+***Relationships***
+
+
+К примеру у нас есть посты, у одного поста есть автор, но у автора может быть много постов.
+
+
+```php
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model
+{
+	public function user()
+	{
+		return $this->belongsTo('App\User'); // Укразываем клас к которому будем обращатся
+	}
+}
+
+```
+
+Обращаемся напрямую к пользователю, который связан с моделлю, и выводим его данные:
+
+```php
+//web.php
+
+Route::get('/', function(){
+ 	$post = Post::first();
+	dd($post->user);
+});
+
+```
+
+Можно прописывать в виде метода и давать дополнительные условия:
+
+
+```php
+//web.php
+
+Route::get('/', function(){
+ 	$post = Post::first();
+	dd($post->user()->where('id', 1)->first());
+	// или
+	// $user->posts()->where('status', 1)->get();
+});
+
+```
+
+Также пользователь у нас имеет множество постов:
+
+
+```php
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+	public function posts()
+	{
+		return $this->hasMany('App\Post');
+	}
+}
+
+```
+
+Вывод множества постов:
+
+```php
+//web.php
+
+Route::get('/', function(){
+ 	$user = User::first();
+	dd($user->posts()->orderBy('id', 'desc')->get()); 
+	dd($user->posts->pluck('id)); // вытащит все id
+	
+});
+
+```
+
+
+``` $this->hasMany('App\Post'); ``` - получим колекцию постов, если нужно получить к примеру не колекцию а один пост, или к примеру у пользователя есть номер телефона, и мы хотим только его получит, нам тогда нужно прописать ```hasOne```;
+
+
 
 
 ### <a name="unit-pane"></a>12.Unit\Feature Test
