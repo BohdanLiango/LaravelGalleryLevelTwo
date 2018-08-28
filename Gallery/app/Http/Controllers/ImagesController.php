@@ -42,6 +42,12 @@ class ImagesController extends Controller
     }
 
     public function update($id, Request $request) {
+
+
+        $this->validate($request, [
+            'image' => 'image|required'
+        ]);
+
         $this->images->update($id, $request->image);
         return redirect("/gallery");
     }

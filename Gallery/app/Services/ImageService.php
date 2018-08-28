@@ -40,6 +40,7 @@ class ImageService
     public function update($id, $newImage)
     {
 //        $image = $this->one($id);
+
         $image = Image::find($id);
         Storage::delete($image->image);
         $filename = $newImage->store('uploads');
@@ -54,7 +55,6 @@ class ImageService
 //            ->where('id', $id)
 //            ->update(['image' => $filename]);
     }
-
 
 
     public function delete($id)
