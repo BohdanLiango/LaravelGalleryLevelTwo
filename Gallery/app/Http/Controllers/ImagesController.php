@@ -42,10 +42,8 @@ class ImagesController extends Controller
     }
 
     public function update($id, Request $request) {
-
         $this->images->update($id, $request->image);
-
-        return redirect("/");
+        return redirect("/gallery");
     }
 
     public function delete($id) {
