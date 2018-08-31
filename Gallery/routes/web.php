@@ -12,19 +12,33 @@
 */
 
 
-Route::get('/', 'HomeController@home');
 
 
+Route::middleware(['guest', 'admin'])->group(function () {
 
-Route::get('/contact', 'HomeController@contact');
-Route::get('/panel', 'HomeController@panel');
+    Route::get('/home', 'HomeController@index');
+
+});
 
 
-
-
-Route::prefix('gallery')->group(function(){
+Route::prefix('gallery')->group(function () {
 
     Route::get('/', 'ImagesController@index');
+
+    Route::get('/show/{id}', 'ImagesController@show');
+
+});
+
+Auth::routes();
+
+
+Route::prefix('profile')->group(function () {
+
+    Route::get('/', 'UsersController@index');
+
+    Route::get('/panel', 'UsersController@panel');
+
+    Route::get('/exit', 'UsersController@logOut');
 
     Route::get('/create', 'ImagesController@create');
 
@@ -32,19 +46,16 @@ Route::prefix('gallery')->group(function(){
 
     Route::get('/show/{id}', 'ImagesController@show');
 
-    Route::get('/edit/{id}','ImagesController@edit');
+    Route::get('/edit/{id}', 'ImagesController@edit');
 
-    Route::post('/update/{id}','ImagesController@update');
+    Route::post('/update/{id}', 'ImagesController@update');
 
-    Route::get('/delete/{id}','ImagesController@delete');
-
+    Route::get('/delete/{id}', 'ImagesController@delete');
 });
 
 
-Route::middleware(['guest', 'admin'])->group(function (){
+Route::get('/', 'HomeController@index');
 
-    Route::get('/home', 'HomeController@index');
 
-});
-
+Route::get('/contact', 'HomeController@contact');
 

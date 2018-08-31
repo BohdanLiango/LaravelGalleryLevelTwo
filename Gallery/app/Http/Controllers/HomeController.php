@@ -5,30 +5,32 @@ namespace App\Http\Controllers;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
 
-
 class HomeController extends Controller
 {
-
-    private $images;
-
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct(ImageService $imageService)
     {
+//        $this->middleware('auth');
         $this->images = $imageService;
     }
 
-
-    public function home() {
-
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
         return view('home');
     }
 
-    public function panel() {
-        return view('config', ["imagesInView" => $this->images->all()]);
-    }
 
-
-    public function contact() {
-
+    public function contact()
+    {
         return view('contact');
     }
 }

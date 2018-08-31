@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Image;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -17,12 +18,19 @@ class ImageService
         return $myImages;
     }
 
-    public function add($image)
+    public function add($image, $title, $desc, $cat)
     {
 
-        Image::create(
-            ['image' => $image->store('uploads')]
-        );
+        $store = new Image;
+        $store->title = $title;
+        $store->description = $desc;
+        $store->image = $image->store('uploads');
+        $store->category_id = $cat;
+        $store->user_id = Auth::user()->id;
+        $store->date_upload = date("Y-m-d H:i:s");
+
+        $store->save();
+
 
 //        DB::table('images')->insert(
 //            ['image' => $image->store('uploads')]
@@ -33,6 +41,7 @@ class ImageService
     {
 //        $image = DB::table('images')->select('*')->where('id', $id)->first();
         $image = Image::all()->where('id', $id)->first();
+
 
         return $image;
     }
