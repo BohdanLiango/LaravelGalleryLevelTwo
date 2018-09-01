@@ -19,13 +19,9 @@ class UsersController extends Controller
 
     public function panel()
     {
-//        $userID = Auth::user()->id;
+        $userID = Auth::user()->id;
 
-
-        $images = Image::paginate(20);
-//        $images->where('user_id', $userID)->get();
-
-
+        $images = Image::all()->where('user_id', $userID);
         return view('config', ["imagesInView" => $images]);
     }
 

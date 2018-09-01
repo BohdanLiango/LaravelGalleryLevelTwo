@@ -43,6 +43,5 @@
         </div>
         <br>
         <hr>
-        {{ $imagesInView->links() }}
     </div>
 @endsection
