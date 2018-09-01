@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Image;
+use http\Env\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -13,6 +14,7 @@ class ImageService
     {
 //        $images = DB::table('images')->select('*')->get();
 //        $myImages = $images->all();
+//        $images = Image::paginate(12)->orderBy('id', 'desc')->get(); /// неработает так
         $images = Image::paginate(12);
         $myImages = $images;
         return $myImages;
@@ -76,4 +78,14 @@ class ImageService
 //        Storage::delete($image->image);
 //        DB::table('images')->where('id', $id)->delete();
     }
+
+    public function validateImage($request)
+    {
+        $this->validate($request, [
+            'image' => 'image|required',
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+    }
+
 }
