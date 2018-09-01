@@ -7,16 +7,10 @@
 
         <ul class="nav nav-pills nav-fill">
             <li class="nav-item">
-                <a class="nav-link active" href="create">Add image</a>
+                <a class="nav-link active" href="create">Add new image</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Longer nav link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
+                <a class="nav-link" href="/profile">My Profile</a>
             </li>
         </ul>
         <hr>

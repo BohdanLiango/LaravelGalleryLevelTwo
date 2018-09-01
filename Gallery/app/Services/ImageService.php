@@ -13,7 +13,7 @@ class ImageService
     {
 //        $images = DB::table('images')->select('*')->get();
 //        $myImages = $images->all();
-        $images = Image::paginate(20);
+        $images = Image::paginate(12);
         $myImages = $images;
         return $myImages;
     }

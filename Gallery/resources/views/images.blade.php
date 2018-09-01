@@ -5,24 +5,15 @@
         <hr>
 
         <ul class="nav nav-pills nav-fill">
-            <li class="nav-item">
-                <a class="nav-link active" href="create">Add image</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Longer nav link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
                     Category
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    @foreach($categories as $category)
+                    <a class="dropdown-item" href="#">{{$category->title}}</a>
+                        @endforeach
                 </div>
             </li>
         </ul>

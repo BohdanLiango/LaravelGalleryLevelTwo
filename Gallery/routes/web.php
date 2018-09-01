@@ -11,14 +11,12 @@
 |
 */
 
-
 Route::middleware(['guest', 'admin'])->group(function () {
 
     Route::get('/home', 'HomeController@index');
 
 
 });
-
 
 Route::get('/', 'HomeController@index');
 
@@ -33,7 +31,6 @@ Route::prefix('gallery')->group(function () {
 });
 
 Auth::routes();
-
 
 Route::prefix('profile')->group(function () {
 

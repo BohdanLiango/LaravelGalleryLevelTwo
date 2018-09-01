@@ -4,23 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Image;
 use App\Services\ImageService;
-use App\User;
-use Illuminate\Http\Request;
+use App\Services\UserService;
 use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
 
-    public function __construct(ImageService $imageService)
+    private $images;
+    private $users;
+
+    public function __construct(ImageService $imageService, UserService $userService)
     {
         $this->middleware('auth');
         $this->images = $imageService;
+        $this->users = $userService;
     }
 
     public function panel()
     {
-        $userID = Auth::user()->id;
-
+        $userID = $this->users->showUserId();
         $images = Image::all()->where('user_id', $userID);
         return view('config', ["imagesInView" => $images]);
     }
@@ -28,7 +30,8 @@ class UsersController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('profile', ['user' => $user]);
+        $userImages = $this->users->showUserImage();
+        return view('profile', ['user' => $user, "imagesInView" => $userImages]);
     }
 
     public function logOut()
