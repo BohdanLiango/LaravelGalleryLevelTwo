@@ -13,7 +13,11 @@
 
 Route::middleware(['guest', 'admin'])->group(function () {
 
-    Route::get('/home', 'HomeController@index');
+    Route::get('/home', function (){
+        dd(factory(App\Post::class, 10)->create());
+//        factory(App\Tags::class, 10)->create();
+//        factory(App\TagsPost::class, 10)->create();
+    });
 
 
 });

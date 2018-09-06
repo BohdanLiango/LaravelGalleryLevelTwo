@@ -23,15 +23,5 @@ $factory->define(App\User::class, function (Faker $faker) {
 });
 
 
-$factory->define(App\Post::class, function (Faker $faker) {
-    return [
-        'title' => $faker->words,
-        'slug' => $faker->slug,
-        'content' => $faker->text,
-        'date' => $faker->date('Y-m-d'),
-        'user_id' => 1
-    ];
-});
 
 
-factory(App\Post::class, 5)->create();

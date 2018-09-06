@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoryImageTable extends Migration
+class CreateTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateCategoryImageTable extends Migration
      */
     public function up()
     {
-        Schema::create('category_image', function (Blueprint $table) {
+        Schema::create('tags', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('image_id');
-            $table->integer('category_id');
+            $table->string('title');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateCategoryImageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category_image');
+        Schema::dropIfExists('tags');
     }
 }
