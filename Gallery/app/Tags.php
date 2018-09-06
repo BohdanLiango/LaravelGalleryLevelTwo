@@ -11,6 +11,6 @@ class Tags extends Model
 
     public function post()
     {
-        return $this->belongsToMany('App\Post', 'tags_post', 'tag_id', 'post_id');
+        return $this->belongsToMany('App\Post', 'tags_posts', 'tag_id', 'post_id');
     }
 }

@@ -21,8 +21,11 @@ $factory->define(App\Post::class, function (Faker $faker) {
             return factory(Category::class)->create()->id;
         },
     ];
-    factory(Tags::class)->create();
+//    ;
+});
+
+$factory->afterCreating(App\Post::class, function ($post, $faker) {
+    $post->tags()->save(factory(App\Tags::class)->create());
 });
 
 
-//factory(\App\TagsPost::class)->create();

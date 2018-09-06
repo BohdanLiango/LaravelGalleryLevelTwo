@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class TagsPost extends Pivot
 {
-    protected $table = 'tags_post';
+    protected $table = 'tags_posts';
     public $guarded = [];
 }
