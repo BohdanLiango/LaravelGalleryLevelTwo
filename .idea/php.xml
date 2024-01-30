@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="MessDetectorOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PHPCSFixerOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PHPCodeSnifferOptionsConfiguration">
+    <option name="highlightLevel" value="WARNING" />
+    <option name="transferred" value="true" />
+  </component>
   <component name="PhpIncludePathManager">
     <include_path>
       <path value="$PROJECT_DIR$/Gallery/vendor/egulias/email-validator" />
@@ -73,12 +83,34 @@
       <path value="$PROJECT_DIR$/Gallery/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/Gallery/vendor/phpdocumentor/reflection-common" />
       <path value="$PROJECT_DIR$/Gallery/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/league/mime-type-detection" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/kylekatarnls/update-helper" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/phpstan/phpdoc-parser" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/symfony/polyfill-iconv" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/symfony/http-client-contracts" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/symfony/translation-contracts" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
+  <component name="PhpStanOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
   <component name="PhpUnit">
     <phpunit_settings>
-      <PhpUnitSettings load_method="CUSTOM_LOADER" custom_loader_path="$PROJECT_DIR$/Gallery/vendor/autoload.php" />
+      <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/Gallery/vendor/autoload.php" />
     </phpunit_settings>
+  </component>
+  <component name="PsalmOptionsConfiguration">
+    <option name="transferred" value="true" />
   </component>
 </project>

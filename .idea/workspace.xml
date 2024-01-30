@@ -1,41 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="16fc9b02-7a99-4c96-8eb1-5d6184eef2f7" name="Default" comment="" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/composer/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/doctrine/inflector/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/doctrine/lexer/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/dragonmantank/cron-expression/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/egulias/email-validator/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/erusev/parsedown/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/laravel/framework/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/league/flysystem/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/monolog/monolog/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/nesbot/carbon/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/paragonie/random_compat/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/psr/container/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/psr/log/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/psr/simple-cache/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/ramsey/uuid/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/swiftmailer/swiftmailer/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/symfony/console/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/symfony/css-selector/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/symfony/debug/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/symfony/event-dispatcher/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/symfony/finder/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/symfony/http-foundation/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/symfony/http-kernel/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/symfony/polyfill-ctype/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/symfony/polyfill-mbstring/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/symfony/polyfill-php72/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/symfony/process/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/symfony/routing/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/symfony/translation/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/symfony/var-dumper/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/tijsverkoyen/css-to-inline-styles/" />
-    <ignored path="$PROJECT_DIR$/Gallery/vendor/vlucas/phpdotenv/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
+    <list default="true" id="16fc9b02-7a99-4c96-8eb1-5d6184eef2f7" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeception.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/phpspec.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/LaravelGalleryLevelTwo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LaravelGalleryLevelTwo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gallery/app/Http/Controllers/ImagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Gallery/app/Http/Controllers/ImagesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gallery/app/Http/Controllers/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Gallery/app/Http/Controllers/UsersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gallery/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/Gallery/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gallery/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gallery/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gallery/database/migrations/2018_08_16_060032_create_images_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/Gallery/database/migrations/2018_08_16_060032_create_images_table.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,6 +24,9 @@
   </component>
   <component name="ComposerSettings">
     <pharConfigPath>$PROJECT_DIR$/Gallery/composer.json</pharConfigPath>
+    <execution>
+      <executable path="composer" />
+    </execution>
   </component>
   <component name="FileEditorManager">
     <leaf>
@@ -66,12 +50,15 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
       <path value="$PROJECT_DIR$/Gallery/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/bin/php">
     <include_path>
       <path value="$PROJECT_DIR$/Gallery/vendor/egulias/email-validator" />
       <path value="$PROJECT_DIR$/Gallery/vendor/laravel/framework" />
@@ -144,12 +131,32 @@
       <path value="$PROJECT_DIR$/Gallery/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/Gallery/vendor/phpdocumentor/reflection-common" />
       <path value="$PROJECT_DIR$/Gallery/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/league/mime-type-detection" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/kylekatarnls/update-helper" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/phpstan/phpdoc-parser" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/symfony/polyfill-iconv" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/symfony/http-client-contracts" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/Gallery/vendor/symfony/translation-contracts" />
     </include_path>
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectFrameBounds" fullScreen="true">
     <option name="width" value="1680" />
     <option name="height" value="1050" />
   </component>
+  <component name="ProjectId" id="2bQPVJLolQ0H0R838YUGiG5kfuU" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -180,24 +187,39 @@
       </pane>
     </panes>
   </component>
-  <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/home/hamad/Dev/realease/LaravelGalleryLevelTwo/Gallery",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Gallery" />
+    </key>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-php-predefined-ba97393d7c68-6f8e3395a2b4-com.jetbrains.php.sharedIndexes-PS-233.14015.96" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -209,6 +231,9 @@
       <option name="presentableId" value="Default" />
       <updated>1535112173595</updated>
       <workItem from="1535112175088" duration="274000" />
+      <workItem from="1706144353668" duration="936000" />
+      <workItem from="1706584572329" duration="2469000" />
+      <workItem from="1706587073703" duration="795000" />
     </task>
     <servers />
   </component>
@@ -241,10 +266,18 @@
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Gallery/app/Image.php">

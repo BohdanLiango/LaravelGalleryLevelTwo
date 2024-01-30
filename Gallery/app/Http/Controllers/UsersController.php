@@ -37,7 +37,7 @@ class UsersController extends Controller
     public function logOut()
     {
         Auth::logout();
-        return redirect('/home');
+        return redirect('/');
     }
 
 }

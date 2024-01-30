@@ -34,7 +34,7 @@ class ImagesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'image' => 'image|required',
+            'image' => 'required',
             'title' => 'required',
             'description' => 'required'
         ]);

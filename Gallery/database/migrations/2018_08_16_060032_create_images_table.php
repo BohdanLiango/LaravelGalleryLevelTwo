@@ -20,7 +20,7 @@ class CreateImagesTable extends Migration
             $table->string('image');
             $table->dateTime('date_upload');
             $table->integer('category_id');
-            $table->integer('author_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
